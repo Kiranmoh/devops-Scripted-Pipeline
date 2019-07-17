@@ -8,7 +8,7 @@ pipeline {
 
       stages {
 
-       stage ('Initialize') {
+       stage ('Initialize the build variables') {
             steps {
                 sh '''
                     echo "PATH = ${PATH}"
@@ -25,11 +25,8 @@ pipeline {
         stage('Testcases execution') {
             steps {
                 echo '..... Test Phase Started :: Testing via Automated Scripts :: ......'
-                sh '''
-                    cd ../integration-testing/
-                    mvn clean verify -P integration-test
-                '''
-                  }
+                sh 'cd ../integration-testing/ && mvn clean verify -P integration-test'
+                 }
         }
               
         
