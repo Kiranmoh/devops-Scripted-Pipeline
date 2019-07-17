@@ -35,6 +35,23 @@ pipeline {
                 sh 'cd docker && sudo docker build -t devops_pipeline_demo .'
                  }
         }
+        stage('Running containers') {
+            steps {
+                echo '..... Copying Artifacts & Building Docker image :: ......'
+               CONTAINER=devops_pipeline_demo
+ 
+               RUNNING=$(sudo docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)
+
+               if [ $? -eq 1 ]; then
+               echo "'$CONTAINER' does not exist."
+               else
+               sudo docker rm -f $CONTAINER
+               fi
+               echo ""
+	       echo "..... Deployment Phase Started :: Building Docker Container :: ......"
+               sh 'cd docker && sudo docker run -d -p 8180:8080 --name devops_pipeline_demo devops_pipeline_demo'
+                 }
+        }
               
         
     }
