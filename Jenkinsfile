@@ -28,6 +28,14 @@ pipeline {
                 sh 'cd integration-testing && mvn clean verify -P integration-test'
                  }
         }
+       stage('Docker image build') {
+            steps {
+                echo '..... Copying Artifacts & Building Docker image :: ......'
+                sh 'cd java_web_code/
+                    /bin/cp target/wildfly-spring-boot-sample-1.0.0.war ../docker/'
+                sh 'cd docker && sudo docker build -t devops_pipeline_demo .'
+                 }
+        }
               
         
     }
