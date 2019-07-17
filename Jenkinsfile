@@ -40,12 +40,12 @@ pipeline {
                 echo '..... Copying Artifacts & Building Docker image :: ......'
                CONTAINER=devops_pipeline_demo
  
-               RUNNING=$sh(sudo docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)
+               RUNNING="""${sh(sudo docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)}"""
 
                if [ $? -eq 1 ]; then
                echo "'$CONTAINER' does not exist."
                else
-               sudo docker rm -f $CONTAINER
+               sh 'sudo docker rm -f $CONTAINER'
                fi
                echo ""
 	       echo "..... Deployment Phase Started :: Building Docker Container :: ......"
