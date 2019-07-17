@@ -44,7 +44,7 @@ pipeline {
  
                RUNNING=$'(sudo docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)'
 
-               if ( $? == '1' ); then
+               if ( $RUNNING == 1 ); then
                echo "'$CONTAINER' does not exist."
                else
                sh 'sudo docker rm -f $CONTAINER'
