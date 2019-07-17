@@ -5,8 +5,8 @@ pipeline {
         stage('Building the app') {
             steps {
                 echo '..... Build Phase Started :: Compiling Source Code :: ......'
-                sh 'cd java_web_code'
-                sh 'mvn install'
+                sh cd java_web_code
+                sh mvn install
             }
         }
         stage('Testcases execution') {
