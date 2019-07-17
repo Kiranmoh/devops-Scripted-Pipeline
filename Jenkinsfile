@@ -42,7 +42,7 @@ pipeline {
                script {
                CONTAINER= 'devops_pipeline_demo'
  
-               RUNNING='(sh 'sudo docker inspect --format="{{ .State.Running }}"' $CONTAINER 2> /dev/null)'
+               RUNNING='(sudo docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)'
 
                if ( $RUNNING == 1 ){
                echo "'$CONTAINER' does not exist."
