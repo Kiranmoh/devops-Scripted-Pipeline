@@ -5,8 +5,8 @@ pipeline {
         stage('Building the app') {
             steps {
                 echo '..... Build Phase Started :: Compiling Source Code :: ......'
-                bat 'set M2_HOME=C:\Kiran\Maven\apache-maven-3.6.1'
-                bat 'set PATH=%M2_HOME%\bin'
+                bat 'set M2_HOME=C:/Kiran/Maven/apache-maven-3.6.1'
+                bat 'set PATH=%M2_HOME%/bin'
                 bat 'cd java_web_code'
                 bat 'mvn install'
             }
