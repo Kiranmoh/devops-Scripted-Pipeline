@@ -40,7 +40,7 @@ pipeline {
                 echo '..... Copying Artifacts & Building Docker image :: ......'
                CONTAINER=devops_pipeline_demo
  
-               RUNNING=$(sudo docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)
+               RUNNING=$sh(sudo docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)
 
                if [ $? -eq 1 ]; then
                echo "'$CONTAINER' does not exist."
