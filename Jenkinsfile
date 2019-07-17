@@ -38,9 +38,11 @@ pipeline {
         stage('Running containers') {
             steps {
                 echo '..... Copying Artifacts & Building Docker image :: ......'
+               
+               script {
                CONTAINER=devops_pipeline_demo
  
-               RUNNING="""${sh(sudo docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)}"""
+               RUNNING=$(sudo docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)
 
                if [ $? -eq 1 ]; then
                echo "'$CONTAINER' does not exist."
@@ -51,6 +53,7 @@ pipeline {
 	       echo "..... Deployment Phase Started :: Building Docker Container :: ......"
                sh 'cd docker && sudo docker run -d -p 8180:8080 --name devops_pipeline_demo devops_pipeline_demo'
                  }
+             }
         }
               
         
