@@ -44,12 +44,12 @@ pipeline {
  
                RUNNING='(sudo docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)'
 
-               echo "Value of running:${RUNNING}"
+               echo "Value of running:{RUNNING}"
 
                if ( RUNNING == 1 ){
                echo "'CONTAINER' does not exist."
                } else {
-               sh 'sudo docker rm -f ${CONTAINER}'}
+               sh 'sudo docker rm -f {CONTAINER}'}
                echo ""
 	       echo "..... Deployment Phase Started :: Building Docker Container :: ......"
                sh 'cd docker && sudo docker run -d -p 8180:8080 --name devops_pipeline_demo devops_pipeline_demo'
