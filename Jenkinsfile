@@ -40,7 +40,7 @@ pipeline {
                 echo '..... Copying Artifacts & Building Docker image :: ......'
                
                script {
-               CONTAINER=devops_pipeline_demo
+               CONTAINER= 'devops_pipeline_demo'
  
                RUNNING=$'(sudo docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)'
 
