@@ -25,7 +25,7 @@ pipeline {
         stage('Testcases execution') {
             steps {
                 echo '..... Test Phase Started :: Testing via Automated Scripts :: ......'
-                sh 'cd ../integration-testing/ && mvn clean verify -P integration-test'
+                sh 'cd integration-testing && mvn clean verify -P integration-test'
                  }
         }
               
