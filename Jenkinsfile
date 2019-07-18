@@ -44,9 +44,9 @@ pipeline {
            
                println "Value of container" + (CONTAINER)
  
-               int RUNNING= sh '(sudo docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)'
+               int RUNNING= '(sudo docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)'
 
-               echo "Value of running:(RUNNING)"
+               println "Value of running" + (RUNNING)
 
                if ( (RUNNING) == 1 ){
                echo "'CONTAINER' does not exist."
