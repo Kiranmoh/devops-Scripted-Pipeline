@@ -41,8 +41,10 @@ pipeline {
                
                script {
                String CONTAINER= "devops_pipeline_demo"
+           
+               echo "Value of container (CONTAINER)"
  
-               int RUNNING= sh 'sudo docker inspect --format="{{ .State.Running }}" (CONTAINER) 2> /dev/null'
+               int RUNNING= sh '(sudo docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)'
 
                echo "Value of running:(RUNNING)"
 
