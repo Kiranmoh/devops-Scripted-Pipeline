@@ -42,9 +42,9 @@ pipeline {
                script {
                def CONTAINER= "devops_pipeline_demo"
            
-               println "Value of container" + (CONTAINER)
+               println "Value of container" + CONTAINER
  
-               def RUNNING= sh '(sudo docker inspect --format="{{ .State.Running }}"(CONTAINER) 2> /dev/null)'
+               def RUNNING= sh '(sudo docker inspect --format="{{ .State.Running }}" CONTAINER 2> /dev/null)'
 
                println "Value of running" + (RUNNING)
 
