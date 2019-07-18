@@ -44,7 +44,7 @@ pipeline {
            
                println "Value of container" + (CONTAINER)
  
-               def RUNNING= sh '(sudo docker inspect --format="{{ .State.Running }}" (CONTAINER) 2> /dev/null)'
+               def RUNNING= sh '(sudo docker inspect --format="{{ .State.Running }}"(CONTAINER) 2> /dev/null)'
 
                println "Value of running" + (RUNNING)
 
